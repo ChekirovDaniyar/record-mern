@@ -1,0 +1,50 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  width: 100%;
+  .content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+      margin-top: 20px;
+      @include font(700, 30px, #181818);
+    }
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .users {
+
+    }
+
+  }
+}
+.dateWrapper {
+  display: flex;
+  align-items: center;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+.dateRow {
+  display: flex;
+  margin: 10px 20px;
+  align-items: center;
+  span {
+    white-space: nowrap;
+    margin-right: 20px;
+    @include font(500, #181818, 15px);
+  }
+  .datePicker {
+    border: 1px solid #D4E3FF;
+    padding: 5px 10px;
+    border-radius: 10px;
+  }
+}

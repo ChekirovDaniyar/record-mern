@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "./styles/mixins";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+input, button, textarea {
+  outline: none;
+  cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  min-width: 576px;
+  margin: 0 auto;
+}
+
+.submitBtn {
+  min-width: 288px;
+  max-width: 320px;
+  height: 44px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  background-color: #054EDB;
+  @include font(500, 14px, #fff);
+
+  &:disabled {
+    background-color: #8B96B1;
+    cursor: not-allowed;
+  }
+}
+
+.input {
+  height: 44px;
+  padding: 12px 10px;
+  border-radius: 10px;
+  border: 1px solid #D4E3FF;
+  background-color: #fff;
+  margin: 8px 0;
+  @include font(400, #181818, 14px);
+
+  &::placeholder {
+    @include font(400, #8B96B1, 14px);
+  }
+}

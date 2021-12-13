@@ -1,0 +1,14 @@
+@import "../../../styles/mixins";
+
+.wrapper {
+  h2 {
+    @include font(500, 20px, #181818);
+    margin-top: 10px;
+  }
+}
+.table {
+  width: 100%;
+  border: 1px solid #181818;
+  border-radius: 5px;
+
+}
