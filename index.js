@@ -19,14 +19,14 @@ app.use('/branch', branchAPI);
 // TODO: set API urls to use
 
 
-if (process.env.NODE_END === 'production') {
+// if (process.env.NODE_END === 'production') {
   app.use(express.static('client/build'));
   const path = require('path');
 
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-}
+// }
 
 const start = async () => {
   try {
