@@ -2,9 +2,19 @@
   width: 100%;
   min-height: 44px;
   border: 1px solid #181818;
+  user-select: none;
+  td {
+    border: 1px solid #181818;
+    padding: 10px 5px;
+  }
   img {
     width: 25px;
     height: 25px;
     cursor: pointer;
+    margin: 0 auto;
+    display: block;
+  }
+  .count {
+    text-align: center;
   }
 }

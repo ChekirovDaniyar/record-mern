@@ -8,12 +8,14 @@ const app = express();
 const userAPI = require('./endpoints/api/user');
 const productAPI = require('./endpoints/api/product');
 const salesAPI = require('./endpoints/api/sales');
+const branchAPI = require('./endpoints/api/branch');
 
 app.use(cors());
 app.use(express.json({ extended: true }));
 app.use('/user', userAPI);
 app.use('/product', productAPI);
 app.use('/sales', salesAPI);
+app.use('/branch', branchAPI);
 // TODO: set API urls to use
 
 

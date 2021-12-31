@@ -32,9 +32,7 @@ class UserModel extends BaseModel {
 
   static async find(filter) {
     try {
-      const user = await super.findMany({ filter, collection });
-      console.log('user', user, filter);
-      return user;
+      return await super.findMany({ filter, collection });
     } catch (error) {
       throw new ErrorHandler(error.statusCode);
     }

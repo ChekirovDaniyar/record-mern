@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import Sales from "../../sales";
 import SalesResult from "../../sales/results";
@@ -7,26 +7,26 @@ import { clearSales } from "../../../store/sales/action";
 import { SpinnerLoader } from "../../loaders/spinnerLoader";
 import { connectContext } from "../../../store";
 import { getOneWorker } from "../../../store/workers/actions";
+import styles from './workerDetail.module.scss';
+import Header from "../../header";
 
 
 const WorkerDetail = ({ dispatch, data, loading }) => {
-  const { search } = useLocation();
-  const query = React.useMemo(() => new URLSearchParams(search), [search]);
+  const params = useParams();
 
   React.useEffect(() => {
     clearSales(dispatch);
-    getOneWorker(dispatch, data?._id);
-    console.log(search.split('='))
-  }, [query]);
+    getOneWorker(dispatch, params.id);
+  }, []);
 
   return (
-    <div>
+    <div className={styles.wrapper}>
+      <Header />
       {loading ? <SpinnerLoader/> : null}
       {!loading ? (
         <React.Fragment>
-          <h3>{data?.name}</h3>
+          <h3>Продавец: {data?.name}</h3>
           <Sales dispatch={dispatch} userId={data?._id} loading={loading}/>
-          <SalesResult />
         </React.Fragment>
         ) : null}
     </div>

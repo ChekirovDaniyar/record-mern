@@ -5,18 +5,26 @@ import SalesResult from "./results";
 import { connectContext } from '../../store';
 import { getSales } from "../../store/sales/action";
 import { ButtonLoader } from "../loaders/buttonLoader";
+import Branches from "../branches";
 
 
 const Sales = ({ dispatch, loading, userId = null }) => {
   const [date, setDate] = React.useState({
-    from: Date.now(),
-    to: Date.now(),
+    from: new Date(Date.now()).setHours(1, 0, 0),
+    to: new Date(Date.now()).setHours(1, 0, 0),
   });
 
   const handleDateChange = (dateVal, type) => {
     setDate({
       ...date,
-      [type]: dateVal,
+      [type]: dateVal.setHours(1, 0, 0),
+    });
+  };
+
+  const handleBranchChange = value => {
+    setDate({
+      ...date,
+      'branchId': value,
     });
   };
 
@@ -49,6 +57,7 @@ const Sales = ({ dispatch, loading, userId = null }) => {
                 />
               </div>
             </div>
+            <Branches handleChange={handleBranchChange} isSale={false}/>
             <button disabled={loading} className="submitBtn">
               {loading ? <ButtonLoader /> : 'Готово'}
             </button>

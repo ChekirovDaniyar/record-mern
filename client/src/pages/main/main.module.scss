@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    tr {
+      padding: 15px 0;
+    }
+  }
+  h3 {
+    margin-top: 20px;
+    @include font(600, 20px, #181818);
+  }
+}

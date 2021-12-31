@@ -26,3 +26,17 @@ export const getOneWorker = async (dispatch, id) => {
     dispatch({ type: constants.GET_ONE, loading: false, error });
   }
 };
+
+export const createWorker = async (dispatch, data) => {
+  dispatch({ type: constants.CREATE, loading: true });
+  try {
+    const res = await request('/user/create', data, 'POST');
+    toast.success(res.message)
+    dispatch({ type: constants.GET_ALL, loading: false, data: res.body });
+  } catch (error) {
+    toast.error('Произошла ошибка!');
+    dispatch({ type: constants.GET_ALL, loading: false })
+  } finally {
+    dispatch({ type: constants.CREATE, loading: false });
+  }
+};

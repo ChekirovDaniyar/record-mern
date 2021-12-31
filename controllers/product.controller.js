@@ -17,8 +17,9 @@ class ProductController extends BaseController {
   async create(req, res) {
     try {
       const item = req.body;
-      const result = await this.model.create(item);
+      await this.model.create(item);
 
+      const result = await this.model.find();
       handleApiSuccess(res, 201, 'Товар успешно создан', result);
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!');
@@ -55,7 +56,9 @@ class ProductController extends BaseController {
 
   async deleteById(req, res) {
     try {
-      const result = await this.model.deleteById(req.params.id);
+      await this.model.deleteById(req.params.id);
+
+      const result = await this.model.find();
       handleApiSuccess(res, 200, 'Товар успешно удален!', result);
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!');

@@ -1,4 +1,4 @@
-import {constants} from "./constants";
+import { constants } from "./constants";
 
 
 const workersReducer = (state, { type, ...res }) => {
@@ -14,6 +14,10 @@ const workersReducer = (state, { type, ...res }) => {
           data: res.data || {},
           loading: res.loading || false,
         }
+      });
+    case constants.CREATE:
+      return Object.assign({}, state, {
+        createLoading: res.loading || false,
       });
     default:
       return state;

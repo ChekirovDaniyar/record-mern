@@ -13,7 +13,7 @@ const {
 
 //TODO Check this variant of admin check middleware
 api.post('/create', create);
-api.get('/all', [checkIsAdmin],get);
+api.get('/all', [checkIsAdmin], get);
 api.post('/login', login);
 api.get('/:id', [checkToken], getById);
 api.delete('/:id', [checkIsAdmin], deleteById);

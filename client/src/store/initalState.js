@@ -7,19 +7,21 @@ export const initialState = {
   products: {
     loading: false,
     data: [],
+    createLoading: false,
+    selected: {
+      data: null,
+      loading: false,
+    }
   },
   sales: {
     data: [],
     loading: false,
   },
   bucket: [],
-  stats: {
-    data: {},
-    loading: false,
-  },
   branches: {
     data: [],
     loading: false,
+    createLoading: false,
   },
   workers: {
     all: [],

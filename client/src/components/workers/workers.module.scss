@@ -7,11 +7,24 @@
     text-align: center;
     @include font(600, 25px, #181818);
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    label {
+      margin: 10px 0;
+      cursor: pointer;
+    }
+    h3 {
+      margin-top: 10px;
+    }
+  }
 }
 .content {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   margin-top: 10px;
 }

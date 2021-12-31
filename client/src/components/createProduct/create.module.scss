@@ -1,0 +1,24 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  width: 100%;
+  margin-top: 15px;
+  h3 {
+    @include font(600, 20px, #181818);
+    text-align: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    select, option {
+      height: 44px;
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 1px solid #D4E3FF;
+      background-color: #fff;
+      margin: 8px 0;
+      @include font(400, #181818, 14px);
+    }
+  }
+}

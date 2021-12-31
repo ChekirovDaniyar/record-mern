@@ -3,8 +3,11 @@ import user from "./user/reducer";
 import bucket from "./bucket/reducer";
 import sales from './sales/reducer';
 import workers from "./workers/reducer";
+import products from './products/reducer';
+import branches from "./branches/reducer";
 import { combineReducers } from "../utils";
 import { initialState } from "./initalState";
+
 
 const Context = React.createContext(initialState);
 
@@ -13,6 +16,8 @@ const combinedReducer = combineReducers({
   bucket,
   sales,
   workers,
+  products,
+  branches,
 });
 
 function ContextProvider ({ children }) {

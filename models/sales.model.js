@@ -19,15 +19,15 @@ class SalesModel extends BaseModel {
 
   static async find(filter) {
     try {
-      const { userId, from, to } = filter;
-
+      const { userId, from, to, branchId } = filter;
       return await super.findMany({
         filter: {
-          date:
-            { $gte: from, $lt: to },
-          ...(userId ? userId : {})
+          date: { $gte: from, $lt: to },
+          ...(userId ? {userId} : {}),
+          ...(branchId && branchId !== 'all' ? {branchId} : {}),
         },
-        collection});
+        collection
+      });
     } catch (error) {
       throw new ErrorHandler(error.statusCode);
     }

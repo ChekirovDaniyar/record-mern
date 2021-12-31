@@ -20,12 +20,11 @@ class UserController extends BaseController {
     try {
       const userData = req.body;
       const user = await this.model.create({ item: userData });
-      const token = await user.genAuthToken();
+      await user.genAuthToken();
 
-      handleApiSuccess(res, 201, 'Пользователь успешно создан!', {
-        ...user._doc,
-        token,
-      });
+      const result = await this.model.find();
+
+      handleApiSuccess(res, 201, 'Пользователь успешно создан!', result);
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!')
     }
@@ -70,8 +69,12 @@ class UserController extends BaseController {
   async get(req, res) {
     try {
       const users = await this.model.get({});
-
-      handleApiSuccess(res, 200, "", users);
+      const result = users.map(item => ({
+        name: item.name,
+        _id: item._id,
+        isAdmin: item.isAdmin,
+      }));
+      handleApiSuccess(res, 200, "", result);
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!');
     }

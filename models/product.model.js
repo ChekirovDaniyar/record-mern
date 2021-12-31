@@ -26,7 +26,8 @@ class ProductModel extends BaseModel {
 
   static async findById(id) {
     try {
-      return await super.findById({ id, collection });
+      const result = await super.findById({ id, collection });
+      return result._doc;
     } catch (error) {
       throw new ErrorHandler(error.statusCode);
     }
@@ -34,7 +35,8 @@ class ProductModel extends BaseModel {
 
   static async updateById (id, data) {
     try {
-      return await super.updateById({ id, data, collection });
+      const result = await super.updateById({ id, data, collection });
+      return result._doc;
     } catch (error) {
       throw new ErrorHandler(error.statusCode);
     }

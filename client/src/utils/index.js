@@ -37,3 +37,26 @@ export const request = async (url, data = null, method = 'GET') => {
 export const objectToQuery = params => {
   return Object.keys(params).map(key => key + '=' + params[key]).join('&');
 };
+
+export const getProductType = type => {
+  switch (type) {
+    case 'ring':
+      return 'Кольца';
+    case 'bracelet':
+      return 'Браслет';
+    case 'chain':
+      return 'Цепочка';
+    case 'anklet':
+      return 'Анклет'
+    default:
+      return 'Кольца';
+  }
+};
+
+export const countItems = (arr, id) => {
+  let count = 0;
+  arr.forEach(el => {
+    if (el._id === id) count ++;
+  });
+  return count;
+};

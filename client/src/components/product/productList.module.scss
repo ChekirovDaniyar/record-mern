@@ -1,0 +1,10 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  h3 {
+    @include font(600, 20px, #181818);
+    text-align: center;
+  }
+}

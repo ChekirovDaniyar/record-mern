@@ -13,7 +13,12 @@ const productSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
-    default: 'lenses',
+    default: 'ring',
+  },
+  amount: {
+    type: Number,
+    default: 0,
+    min: 0,
   },
 });
 
