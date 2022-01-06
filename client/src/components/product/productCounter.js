@@ -19,6 +19,7 @@ const ProductCounter = ({ item, dispatch, count = 0 }) => {
     <tr className={styles.wrapper}>
       <td>{item.name}</td>
       <td className={styles.count}>{count}</td>
+      <td>{item.price} сом</td>
       <td onClick={handleIncrement}>
         <img src={PlusSvg} alt="plus"/>
       </td>

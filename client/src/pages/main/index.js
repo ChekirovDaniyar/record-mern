@@ -63,6 +63,7 @@ const MainPage = ({dispatch, user, products, loading, bucket}) => {
               <ProductCounter item={item} key={item._id} count={countItems(bucket, item._id)}/>
             ))}
           </table>
+          <h3>Итого: {bucket.reduce((sum, item) => sum + item.price, 0)}</h3>
           <Branches handleChange={setBranch}/>
           <button onClick={handleSend} disabled={!bucket.length} className="submitBtn">Отправить</button>
         </div>
