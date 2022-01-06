@@ -54,7 +54,8 @@ const CreateProduct = ({ dispatch, loading }) => {
           <option value="ring">Кольца</option>
           <option value="bracelet">Браслет</option>
           <option value="chain">Цепочка</option>
-          <option value="anklet">Анклет</option>
+          <option value="earrings">Серьги</option>
+          <option value="box">Коробка</option>
         </select>
         <button className="submitBtn" disabled={loading || !isValid}>
           {loading ? <ButtonLoader /> : 'Готово'}

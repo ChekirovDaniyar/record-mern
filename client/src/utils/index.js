@@ -46,8 +46,10 @@ export const getProductType = type => {
       return 'Браслет';
     case 'chain':
       return 'Цепочка';
-    case 'anklet':
-      return 'Анклет'
+    case 'earrings':
+      return 'Серьги';
+    case 'box':
+      return 'box';
     default:
       return 'Кольца';
   }
