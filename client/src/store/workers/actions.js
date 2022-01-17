@@ -40,3 +40,15 @@ export const createWorker = async (dispatch, data) => {
     dispatch({ type: constants.CREATE, loading: false });
   }
 };
+
+export const deleteWorker = async (dispatch, id) => {
+  dispatch({ type: constants.DELETE, deleteLoading: true });
+  try {
+    await request(`/user/${id}`, {}, 'DELETE');
+    toast.success('Пользователь успешно удален!');
+  } catch (error) {
+    toast.error('Произошла ошибка!');
+  } finally {
+    dispatch({ type: constants.DELETE, deleteLoading: false });
+  }
+};

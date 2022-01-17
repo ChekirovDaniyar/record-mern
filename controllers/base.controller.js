@@ -63,7 +63,6 @@ class BaseController {
     try {
       const item = await BaseModel.deleteById({
         id: req.params.id,
-        data: req.body.data,
         collection: this.collection,
       });
 

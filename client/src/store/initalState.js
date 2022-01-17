@@ -28,6 +28,7 @@ export const initialState = {
     selected: {
       data: null,
       loading: false,
+      deleteLoading: false,
     },
     loading: false,
   },

@@ -66,11 +66,7 @@ class BaseModel {
         data.password = await bcrypt.hash(data.password, salt);
       }
 
-      const item = await collection.findOneAndUpdate({_id: id}, data, {
-        new: true
-      });
-
-      return item;
+      return await collection.findOneAndUpdate({ _id: id }, data);
     } catch (error) {
       throw new ErrorHandler(500);
     }

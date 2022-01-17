@@ -12,7 +12,7 @@ const {
 } = new UserController();
 
 //TODO Check this variant of admin check middleware
-api.post('/create', create);
+api.post('/create', [checkIsAdmin], create);
 api.get('/all', [checkIsAdmin], get);
 api.post('/login', login);
 api.get('/:id', [checkToken], getById);

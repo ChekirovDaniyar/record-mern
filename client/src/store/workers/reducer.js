@@ -11,6 +11,7 @@ const workersReducer = (state, { type, ...res }) => {
     case constants.GET_ONE:
       return Object.assign({}, state, {
         selected: {
+          ...state.selected,
           data: res.data || {},
           loading: res.loading || false,
         }
@@ -18,6 +19,13 @@ const workersReducer = (state, { type, ...res }) => {
     case constants.CREATE:
       return Object.assign({}, state, {
         createLoading: res.loading || false,
+      });
+    case constants.DELETE:
+      return Object.assign({}, state, {
+        selected: {
+          ...state.selected,
+          deleteLoading: res.deleteLoading || false
+        },
       });
     default:
       return state;

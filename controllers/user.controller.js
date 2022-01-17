@@ -74,7 +74,7 @@ class UserController extends BaseController {
         _id: item._id,
         isAdmin: item.isAdmin,
       }));
-      handleApiSuccess(res, 200, "", result);
+      handleApiSuccess(res, 200, "Пользователи получены!", result);
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!');
     }
@@ -82,9 +82,9 @@ class UserController extends BaseController {
 
   async deleteById(req, res) {
     try {
-      const user = await super.deleteById(req, res);
+      await this.model.deleteById(req.params.id);
 
-      handleApiSuccess(res, 200, 'Успешное удаление!', user);
+      handleApiSuccess(res, 200, 'Успешное удаление!', {});
     } catch (error) {
       handleApiError(res, error.statusCode, 'Произошла ошибка!')
     }

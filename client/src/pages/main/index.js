@@ -15,6 +15,7 @@ import styles from './main.module.scss';
 
 const MainPage = ({dispatch, user, products, loading, bucket}) => {
   const [branch, setBranch] = React.useState('');
+  const [search, setSearch] = React.useState('');
   const history = useHistory();
 
   const handleSend = () => {
@@ -27,9 +28,22 @@ const MainPage = ({dispatch, user, products, loading, bucket}) => {
     }
   };
 
-  const filteredBucket = bucket.filter((curr, idx, arr) => (
+  const filteredBucket = React.useCallback(bucket.filter((curr, idx, arr) => (
     arr.findIndex(res => (res._id === curr._id)) === idx
-  ));
+  )), [bucket]);
+
+  const handleSearchChange = ({ target: { value } }) => {
+    setSearch(value);
+  };
+
+  const filterProducts = React.useCallback(() => {
+    if (!search.length) {
+      return products;
+    }
+    return products.filter(item => {
+      return item.name.toLowerCase().includes(search.toLowerCase());
+    });
+  }, [search, products]);
 
   React.useEffect(() => {
     if (!user.isLoggedIn && !user.loading) {
@@ -49,10 +63,12 @@ const MainPage = ({dispatch, user, products, loading, bucket}) => {
         <div>
           <h1>Страница учета</h1>
           {loading ? <SpinnerLoader/> : null}
+          <h3>Поиск</h3>
+          <input className="input" type="text" value={search} onChange={handleSearchChange}/>
           <h3>Список товаров</h3>
           <table>
             <tbody>
-            {products?.map(item => (
+            {filterProducts()?.map(item => (
               <ProductCounter item={item} key={item._id} count={countItems(bucket, item._id)}/>
             ))}
             </tbody>

@@ -80,3 +80,21 @@ a {
     @include font(400, #8B96B1, 14px);
   }
 }
+
+.redBtn {
+  background-color: #d0342c;
+  min-width: 288px;
+  max-width: 320px;
+  height: 44px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  margin-top: 20px;
+  @include font(500, 14px, #fff);
+
+  &:disabled {
+    background-color: #f68783;
+    cursor: not-allowed;
+  }
+
+}

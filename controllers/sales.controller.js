@@ -2,7 +2,6 @@ const BaseController = require('./base.controller');
 const salesModel = require('../models/sales.model');
 const productModel = require('../models/product.model');
 const { handleApiError, handleApiSuccess } = require('../lib/handlers');
-const mongoose = require("mongoose");
 
 
 class SalesController extends BaseController {
@@ -18,7 +17,9 @@ class SalesController extends BaseController {
       const { productId, userId, branchId } = req.body;
       const result = await this.model.create({ item: {
           productId, userId, branchId, date: Date.now()
-        }});
+      }});
+
+      await productModel.updateById(productId, { $inc: { amount: -1 } });
       handleApiSuccess(res, 201, 'Продажи сохранены!', result);
     } catch (error) {
       handleApiError(res, error.statusCode, error);
